@@ -106,14 +106,14 @@ export default {
   name: 'HomePage',
   data () {
     return {
-      type: 'S1 S2',
-      size: '210 220',
-      toughness: '100',
-      color: 'H001 W001 ZH01',
-      yearMonth: '0125',
+      type: '',
+      size: '',
+      toughness: '',
+      color: '',
+      yearMonth: '',
       ageGroup: '成人',
       nonComplete: false,
-      producer: '01',
+      producer: '',
       XLSX: null,
       wb: null,
       ws: null,
@@ -164,6 +164,12 @@ export default {
       infos[6] --> color
       infos[7] --> size
       */
+      while (infos[5].length < 3) {
+        infos[5] = '0' + infos[5]
+      }
+      while (infos[7].length < 3) {
+        infos[7] = '#' + infos[7]
+      }
       const code = (
         infos[0] + infos[1] + infos[2] + ' - ' +
         (infos[3] === 'false' ? 'M' : 'F') + (infos[4] === '成人' ? 'A' : 'K') + infos[5] + ' - ' +
